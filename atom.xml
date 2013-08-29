@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Cynial's Blog]]></title>
+  <link href="http://cynials.com/atom.xml" rel="self"/>
+  <link href="http://cynials.com"/>
+  <updated>2013-08-22T10:05:10.957Z</updated>
+  <id>http://cynials.com/</id>
+  <author>
+    <name><![CDATA[Cynial]]></name>
+    <email><![CDATA[huanglve@gmail.com]]></email>
+  </author>
+  <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[多个 count, group by]]></title>
+    <link href="http://cynials.com/2013/08/15/多个count-group-by/"/>
+    <id>http://cynials.com/2013/08/15/多个count-group-by/</id>
+    <published>2013-08-15T15:05:57.000Z</published>
+    <updated>2013-08-22T07:55:01.000Z</updated>
+    <content type="html"><![CDATA[<p>主要用到 SUM 和 CASE</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="operator"><span class="keyword">SELECT</span> classid,
+    <span class="aggregate">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt; <span class="number">120</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">AS</span> [&gt;<span class="number">120</span>],
+    <span class="aggregate">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt; <span class="number">90</span> <span class="keyword">AND</span> score &lt;= <span class="number">120</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> EMD) [&gt;<span class="number">90</span>]
+<span class="keyword">FROM</span> tb
+<span class="keyword">GROUP</span> <span class="keyword">BY</span> classid
+</pre></td></tr></table></figure>
+]]></content>
+    <category scheme="http://cynials.com/tags/MySql/" term="MySql"/>
+  </entry>
+</feed>
