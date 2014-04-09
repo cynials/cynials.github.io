@@ -1,0 +1,38 @@
+permalink: /:year/:month/:day/:title.html
+paginate: 10
+markdown: redcarpet
+
+# 作者信息
+author: 
+  name: Cynial
+  email: huanglve@gmail.com
+  link: http://cynials.com
+  weibo: http://weibo.com/cynial
+  github: http://github.com/cynial
+
+# 站点信息
+title: Cynial的博客
+description: Cynial的博客
+url: http://cynials.com
+rss_url: /pages/atom.xml
+
+# gavatar头像及Favicon
+gavatar: /public/upload/gavatar/gavatar.png
+favicon: /public/upload/gavatar/favicon.ico
+
+# google analytics 设置
+ga:
+  id: UA-xxx-1
+  url: cynials.com
+
+# disqus 设置
+disqus:
+  shortname: cynialsblog
+
+# 主题设置，自动激活某个标签
+active: 技术
+
+# 中文本地化
+locals:
+  tags: 标签
+  about: 关于
