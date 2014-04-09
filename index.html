@@ -1,224 +1,55 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Cynial's Blog</title>
-  <meta name="author" content="Cynial">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+---
+layout: page
+title: 首页
+---
 
-  
-  <meta property="og:site_name" content="Cynial's Blog"/>
-
-  
-    <meta property="og:image" content="undefined"/>
-  
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Cynial's Blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head>
-
-
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Cynial's Blog</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-08-29T12:59:43.000Z"><a href="/2013/08/29/备份文件/">Aug 29 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/08/29/备份文件/">不让Vim生成~备份文件</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>用 Vim 编辑文件的时候默认会生成 “文件名~” 这样的备份文件，在配置文件处加上 <code>set nobk</code> 就不会生成了。</p>
-
-      
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">最新文章</div>
+          {% for post in paginator.posts %}
+            <a  href='{{ post.url }}' class="list-group-item pjaxlink">
+              {{post.title}}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Python</div>
+          {% for tag in site.tags %} 
+            {% if tag[0] == 'Python' %}
+              {% for post in tag[1] %}
+                <a  href='{{ post.url }}' class="list-group-item pjaxlink">
+                  {{post.title}}
+                </a>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-08-29T12:42:03.000Z"><a href="/2013/08/29/安装-xdebug/">Aug 29 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/08/29/安装-xdebug/">安装 xdebug</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <ol>
-<li><p><code>brew install php54-xdebug</code></p>
-</li>
-<li><p>添加 <code>zend_extension = &quot;/usr/local/Cellar/php54-xdebug/2.2.1/xdebug.so&quot;</code> 至 <code>/Applications/XAMPP/etc/php.ini</code></p>
-</li>
-</ol>
-
-      
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">OpenStack</div>
+          {% for tag in site.tags %} 
+            {% if tag[0] == 'OpenStack' %}
+              {% for post in tag[1] %}
+                <a  href='{{ post.url }}' class="list-group-item pjaxlink">
+                  {{post.title}}
+                </a>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-08-15T15:05:57.000Z"><a href="/2013/08/15/多个count-group-by/">Aug 15 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/08/15/多个count-group-by/">多个 count, group by</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>主要用到 SUM 和 CASE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="operator"><span class="keyword">SELECT</span> classid,
-    <span class="aggregate">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt; <span class="number">120</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">AS</span> [&gt;<span class="number">120</span>],
-    <span class="aggregate">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> score &gt; <span class="number">90</span> <span class="keyword">AND</span> score &lt;= <span class="number">120</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> EMD) [&gt;<span class="number">90</span>]
-<span class="keyword">FROM</span> tb
-<span class="keyword">GROUP</span> <span class="keyword">BY</span> classid
-</pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:cynials.com">
-  </form>
 </div>
-
-  
-
-  
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/MySql/">MySql</a><small>1</small></li>
-  
-    <li><a href="/tags/PHP/">PHP</a><small>1</small></li>
-  
-    <li><a href="/tags/Vim/">Vim</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2013 Cynial
-  
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<script type="text/javascript">
-var disqus_shortname = 'cynialsblog';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-</body>
-</html>
+ 
